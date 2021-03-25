@@ -1,5 +1,6 @@
 package cn.yajienet.demo.controller;
 
+import cn.yajienet.demo.annotation.DemoAnnotation;
 import cn.yajienet.demo.event.DemoEvent;
 import cn.yajienet.demo.listener.SpringContextHolder;
 import cn.yajienet.demo.service.UserService;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @Author WangChenguang
  * @Date 2021-03-14 16:37
  */
+
 @Controller
 @Api(tags = "首页")
 public class HomeController {
@@ -29,6 +31,7 @@ public class HomeController {
     private ApplicationContext applicationContext;
 
 
+    @DemoAnnotation(name = "HomeController.index",value = "注解测试")
     @GetMapping(value = "/")
     public String index(@RequestParam(defaultValue = "wcg") String name, Model model){
         model.addAttribute("user", JSONObject.toJSONString(UserService.demo(name)));
